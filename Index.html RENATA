@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Produksi TKJ - SMK Ma'arif NU Tirto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Srikhand&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --hijau-utama: #2E8B57;
+            --hijau-muda: #90EE90;
+            --hijau-pucat: #E0F2E9;
+            --putih: #FFFFFF;
+            --hitam: #333333;
+            --abu: #F5F5F5;
+            --bayangan: rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--putih);
+            color: var(--hitam);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--hijau-utama);
+            color: var(--putih);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px var(--bayangan);
+            transition: all 0.3s ease;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+            font-size: 24px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--putih);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--hijau-muda);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: var(--hijau-utama);
+            color: var(--putih);
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h2 {
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--hijau-muda);
+            color: var(--hijau-utama);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease 0.4s;
+            animation-fill-mode: both;
+        }
+        
+        .btn:hover {
+            background-color: var(--putih);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--bayangan);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+            font-size: 36px;
+            color: var(--hijau-utama);
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--hijau-utama);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Profil Section */
+        .profil {
+            background-color: var(--hijau-pucat);
+        }
+        
+        .profil-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .profil-text h3 {
+            font-size: 32px;
+            color: var(--hijau-utama);
+            margin-bottom: 25px;
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+        }
+        
+        .profil-text p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+        
+        .profil-text p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Layanan Section */
+        .layanan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .layanan-card {
+            background-color: var(--putih);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--bayangan);
+            transition: all 0.3s;
+        }
+        
+        .layanan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px var(--bayangan);
+        }
+        
+        .layanan-icon {
+            background-color: var(--hijau-utama);
+            color: var(--putih);
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+        }
+        
+        .layanan-content {
+            padding: 25px;
+        }
+        
+        .layanan-content h3 {
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+            font-size: 24px;
+            color: var(--hijau-utama);
+            margin-bottom: 15px;
+        }
+        
+        /* Testimoni Section */
+        .testimoni {
+            background-color: var(--abu);
+        }
+        
+        .testimoni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimoni-card {
+            background-color: var(--putih);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px var(--bayangan);
+            position: relative;
+            transition: all 0.4s ease;
+            overflow: hidden;
+        }
+        
+        .testimoni-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background-color: var(--hijau-utama);
+            transition: width 0.3s ease;
+        }
+        
+        .testimoni-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px var(--bayangan);
+        }
+        
+        .testimoni-card:hover::before {
+            width: 12px;
+        }
+        
+        .testimoni-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimoni-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--hijau-utama);
+            color: var(--putih);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(46, 139, 87, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .testimoni-rating {
+            margin-left: auto;
+            color: #FFD700;
+        }
+        
+        .testimoni-rating i {
+            font-size: 16px;
+            margin-left: 2px;
+        }
+        
+        .testimoni-content {
+            font-style: italic;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .testimoni-content::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 18px;
+            color: var(--hijau-pucat);
+        }
+        
+        .testimoni-author {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            color: var(--hijau-utama);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .author-info p {
+            font-size: 14px;
+            color: #777;
+            margin: 0;
+        }
+        
+        .testimoni-date {
+            font-size: 14px;
+            color: #999;
+        }
+        
+        /* Pricelist Section */
+        .pricelist-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: var(--putih);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--bayangan);
+        }
+        
+        .pricelist-header {
+            background-color: var(--hijau-utama);
+            color: var(--putih);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .pricelist-header h3 {
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+            font-size: 28px;
+        }
+        
+        .pricelist-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .pricelist-table th, .pricelist-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid var(--hijau-pucat);
+        }
+        
+        .pricelist-table th {
+            background-color: var(--hijau-pucat);
+            font-weight: 600;
+        }
+        
+        .pricelist-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .pricelist-table tr:hover {
+            background-color: var(--hijau-pucat);
+        }
+        
+        .price {
+            font-weight: 600;
+            color: var(--hijau-utama);
+        }
+        
+        /* Kontak Section */
+        .kontak {
+            background-color: var(--hijau-pucat);
+        }
+        
+        .kontak-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .kontak-info {
+            background-color: var(--putih);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px var(--bayangan);
+            height: fit-content;
+        }
+        
+        .kontak-info h3 {
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+            font-size: 28px;
+            color: var(--hijau-utama);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .kontak-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--hijau-utama);
+            border-radius: 2px;
+        }
+        
+        .kontak-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--hijau-pucat);
+            transition: all 0.3s ease;
+        }
+        
+        .kontak-item:hover {
+            transform: translateX(5px);
+            background-color: var(--hijau-muda);
+        }
+        
+        .kontak-item i {
+            font-size: 24px;
+            color: var(--hijau-utama);
+            margin-right: 15px;
+            background-color: var(--putih);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(46, 139, 87, 0.2);
+        }
+        
+        .kontak-item-content h4 {
+            font-size: 18px;
+            color: var(--hijau-utama);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .kontak-item-content p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        .kontak-form {
+            background-color: var(--putih);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--bayangan);
+        }
+        
+        .kontak-form h3 {
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+            font-size: 28px;
+            color: var(--hijau-utama);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .kontak-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--hijau-utama);
+            border-radius: 2px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--hijau-utama);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--hijau-utama);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn-submit {
+            background-color: var(--hijau-utama);
+            color: var(--putih);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .btn-submit:hover {
+            background-color: var(--hijau-muda);
+            color: var(--hijau-utama);
+            transform: translateY(-3px);
+        }
+        
+        /* Halaman Kontak Lengkap */
+        .kontak-lengkap {
+            padding: 120px 0 80px;
+            background-color: var(--hijau-pucat);
+        }
+        
+        .kontak-lengkap .section-title {
+            margin-bottom: 30px;
+        }
+        
+        .kontak-lengkap-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .kontak-lengkap-info {
+            background-color: var(--putih);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--bayangan);
+            height: fit-content;
+        }
+        
+        .kontak-lengkap-info h3 {
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+            font-size: 28px;
+            color: var(--hijau-utama);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .kontak-lengkap-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--hijau-utama);
+            border-radius: 2px;
+        }
+        
+        .kontak-lengkap-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--hijau-pucat);
+            transition: all 0.3s ease;
+        }
+        
+        .kontak-lengkap-item:hover {
+            transform: translateX(5px);
+            background-color: var(--hijau-muda);
+        }
+        
+        .kontak-lengkap-item i {
+            font-size: 28px;
+            color: var(--hijau-utama);
+            margin-right: 15px;
+            background-color: var(--putih);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(46, 139, 87, 0.2);
+        }
+        
+        .kontak-lengkap-item-content h4 {
+            font-size: 18px;
+            color: var(--hijau-utama);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .kontak-lengkap-item-content p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        .kontak-lengkap-form {
+            background-color: var(--putih);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--bayangan);
+        }
+        
+        .kontak-lengkap-form h3 {
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+            font-size: 28px;
+            color: var(--hijau-utama);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .kontak-lengkap-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--hijau-utama);
+            border-radius: 2px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--hijau-utama);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--hijau-utama);
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn-submit-full {
+            background-color: var(--hijau-utama);
+            color: var(--putih);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .btn-submit-full:hover {
+            background-color: var(--hijau-muda);
+            color: var(--hijau-utama);
+            transform: translateY(-3px);
+        }
+        
+        /* Peta Section */
+        .peta-section {
+            padding: 0 0 80px;
+            background-color: var(--hijau-pucat);
+        }
+        
+        .peta-container {
+            background-color: var(--putih);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--bayangan);
+        }
+        
+        .peta-container iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            display: block;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 0 0 80px;
+            background-color: var(--hijau-pucat);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background-color: var(--putih);
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px var(--bayangan);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--hijau-utama);
+            transition: background-color 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: var(--hijau-pucat);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--hitam);
+            color: var(--putih);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Srikhand', cursive;
+            font-style: italic;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--hijau-muda);
+        }
+        
+        .footer-column p, .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column a {
+            color: var(--putih);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--hijau-muda);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--hijau-muda);
+            color: var(--hijau-utama);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .kontak-container, .kontak-lengkap-container {
+                flex-direction: column;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--hijau-utama);
+            color: var(--putih);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .scroll-top:hover {
+            background-color: var(--hijau-muda);
+            color: var(--hijau-utama);
+        }
+        
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background-color: var(--hijau-utama);
+            color: var(--putih);
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px var(--bayangan);
+            transform: translateX(150%);
+            transition: transform 0.3s;
+            z-index: 1001;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>UP TKJ SMK Ma'arif NU Tirto</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#beranda">Beranda</a></li>
+                    <li><a href="#profil">Profil</a></li>
+                    <li><a href="#layanan">Layanan</a></li>
+                    <li><a href="#testimoni">Testimoni</a></li>
+                    <li><a href="#pricelist">Pricelist</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                    <li><a href="#kontak-lengkap">Kontak Lengkap</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+        <div class="container hero-content">
+            <h2>Unit Produksi TKJ</h2>
+            <p>Solusi Teknologi Informasi Terpercaya untuk Kebutuhan Anda</p>
+            <a href="#layanan" class="btn">Lihat Layanan Kami</a>
+        </div>
+    </section>
+
+    <!-- Profil Section -->
+    <section id="profil" class="profil">
+        <div class="container">
+            <h2 class="section-title">Profil Unit Produksi</h2>
+            <div class="profil-content">
+                <div class="profil-text">
+                    <h3>Tentang UP TKJ</h3>
+                    <p>Unit Produksi TKJ SMK Ma'arif NU Tirto adalah unit usaha yang dikelola oleh siswa dan dibimbing oleh guru-guru berpengalaman di bidang Teknik Komputer Jaringan.</p>
+                    <p>Kami menyediakan berbagai layanan teknologi informasi dengan kualitas terbaik dan harga terjangkau. Setiap layanan yang kami berikan didukung oleh tenaga ahli yang telah tersertifikasi.</p>
+                    <p>Sebagai bagian dari program teaching factory, UP TKJ bertujuan untuk memberikan pengalaman kerja nyata kepada siswa sebelum mereka lulus dan memasuki dunia industri.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Layanan Section -->
+    <section id="layanan" class="container">
+        <h2 class="section-title">Layanan Kami</h2>
+        <div class="layanan-grid">
+            <div class="layanan-card">
+                <div class="layanan-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="layanan-content">
+                    <h3>Perakitan Komputer</h3>
+                    <p>Layanan perakitan komputer sesuai kebutuhan dengan komponen berkualitas dan garansi resmi.</p>
+                </div>
+            </div>
+            <div class="layanan-card">
+                <div class="layanan-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="layanan-content">
+                    <h3>Perbaikan Komputer</h3>
+                    <p>Perbaikan berbagai kerusakan hardware dan software komputer dengan teknisi berpengalaman.</p>
+                </div>
+            </div>
+            <div class="layanan-card">
+                <div class="layanan-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="layanan-content">
+                    <h3>Instalasi Jaringan</h3>
+                    <p>Pemasangan dan konfigurasi jaringan kabel maupun wireless untuk rumah dan kantor.</p>
+                </div>
+            </div>
+            <div class="layanan-card">
+                <div class="layanan-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="layanan-content">
+                    <h3>Keamanan Jaringan</h3>
+                    <p>Pemasangan sistem keamanan jaringan untuk melindungi data dari ancaman cyber.</p>
+                </div>
+            </div>
+            <div class="layanan-card">
+                <div class="layanan-icon">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <div class="layanan-content">
+                    <h3>Instalasi Software</h3>
+                    <p>Instalasi sistem operasi dan aplikasi sesuai kebutuhan personal maupun bisnis.</p>
+                </div>
+            </div>
+            <div class="layanan-card">
+                <div class="layanan-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div class="layanan-content">
+                    <h3>Pelatihan Komputer</h3>
+                    <p>Kursus dan pelatihan penggunaan komputer dan aplikasi untuk berbagai tingkatan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimoni Section -->
+    <section id="testimoni" class="testimoni">
+        <div class="container">
+            <h2 class="section-title">Testimoni Pelanggan</h2>
+            <div class="testimoni-grid">
+                <div class="testimoni-card">
+                    <div class="testimoni-header">
+                        <div class="testimoni-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimoni-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimoni-content">
+                        <p>"Layanan perakitan komputer sangat memuaskan. Komputer yang dirakit sesuai dengan kebutuhan saya dan performanya sangat baik. Harga juga terjangkau."</p>
+                    </div>
+                    <div class="testimoni-author">
+                        <div class="author-info">
+                            <h4>Budi Santoso</h4>
+                            <p>Pelanggan</p>
+                        </div>
+                        <div class="testimoni-date">15 Oktober 2023</div>
+                    </div>
+                </div>
+                <div class="testimoni-card">
+                    <div class="testimoni-header">
+                        <div class="testimoni-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimoni-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimoni-content">
+                        <p>"Teknisi UP TKJ sangat profesional dalam memperbaiki laptop saya. Kerusakan terselesaikan dengan cepat dan harga sesuai dengan kesepakatan awal."</p>
+                    </div>
+                    <div class="testimoni-author">
+                        <div class="author-info">
+                            <h4>Siti Nurhaliza</h4>
+                            <p>Pelanggan</p>
+                        </div>
+                        <div class="testimoni-date">22 Oktober 2023</div>
+                    </div>
+                </div>
+                <div class="testimoni-card">
+                    <div class="testimoni-header">
+                        <div class="testimoni-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="testimoni-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <div class="testimoni-content">
+                        <p>"Instalasi jaringan kantor kami dikerjakan dengan rapi dan sesuai jadwal. Tim UP TKJ sangat kooperatif dan memberikan solusi terbaik untuk kebutuhan kami."</p>
+                    </div>
+                    <div class="testimoni-author">
+                        <div class="author-info">
+                            <h4>Ahmad Fauzi</h4>
+                            <p>Manajer IT</p>
+                        </div>
+                        <div class="testimoni-date">5 November 2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricelist Section -->
+    <section id="pricelist" class="container">
+        <h2 class="section-title">Pricelist Layanan</h2>
+        <div class="pricelist-container">
+            <div class="pricelist-header">
+                <h3>Daftar Harga Layanan UP TKJ</h3>
+            </div>
+            <table class="pricelist-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Layanan</th>
+                        <th>Keterangan</th>
+                        <th>Harga</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Perakitan Komputer Standar</td>
+                        <td>Intel Core i3, RAM 8GB, SSD 256GB</td>
+                        <td class="price">Rp 5.500.000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Perakitan Komputer Gaming</td>
+                        <td>Intel Core i5, RAM 16GB, SSD 512GB, VGA GTX 1650</td>
+                        <td class="price">Rp 9.500.000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Instalasi OS + Software</td>
+                        <td>Windows 10 + MS Office + Antivirus</td>
+                        <td class="price">Rp 250.000</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Perbaikan Software</td>
+                        <td>Perbaikan sistem, virus, dll</td>
+                        <td class="price">Rp 150.000</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Perbaikan Hardware</td>
+                        <td>Tergantung kerusakan dan spare part</td>
+                        <td class="price">Mulai Rp 100.000</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Instalasi Jaringan Rumah</td>
+                        <td>Setting router, kabel, max 5 device</td>
+                        <td class="price">Rp 500.000</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Instalasi Jaringan Kantor</td>
+                        <td>Setting router, switch, kabel, max 20 device</td>
+                        <td class="price">Rp 1.500.000</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>Pelatihan Komputer Dasar</td>
+                        <td>10 sesi @2 jam</td>
+                        <td class="price">Rp 750.000</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>Pelatihan Jaringan Dasar</td>
+                        <td>8 sesi @2 jam</td>
+                        <td class="price">Rp 850.000</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>Maintenance Komputer</td>
+                        <td>Kontrak 6 bulan (2x kunjungan)</td>
+                        <td class="price">Rp 1.200.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Kontak Section -->
+    <section id="kontak" class="kontak">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami</h2>
+            <div class="kontak-container">
+                <div class="kontak-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="kontak-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="kontak-item-content">
+                            <h4>Alamat</h4>
+                            <p>Jalan Wonoprojo No.19 Pacar, Kecamatan Tirto, Kabupaten Pekalongan, Jawa Tengah</p>
+                        </div>
+                    </div>
+                    <div class="kontak-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="kontak-item-content">
+                            <h4>Telepon</h4>
+                            <p>(0285) 123456</p>
+                        </div>
+                    </div>
+                    <div class="kontak-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="kontak-item-content">
+                            <h4>Email</h4>
+                            <p>uptkj@smkmaarifnutirto.sch.id</p>
+                        </div>
+                    </div>
+                    <div class="kontak-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="kontak-item-content">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Jumat: 08.00 - 16.00<br>Sabtu: 08.00 - 12.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="kontak-form">
+                    <h3>Kirim Pesan</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nama Lengkap</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subjek</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Pesan</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn-submit">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Halaman Kontak Lengkap -->
+    <section id="kontak-lengkap" class="kontak-lengkap">
+        <div class="container">
+            <h2 class="section-title">Hubungi Kami Lebih Lengkap</h2>
+            <div class="kontak-lengkap-container">
+                <div class="kontak-lengkap-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="kontak-lengkap-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="kontak-lengkap-item-content">
+                            <h4>Alamat</h4>
+                            <p>Jalan Wonoprojo No.19 Pacar, Kecamatan Tirto, Kabupaten Pekalongan, Jawa Tengah</p>
+                        </div>
+                    </div>
+                    <div class="kontak-lengkap-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="kontak-lengkap-item-content">
+                            <h4>Telepon</h4>
+                            <p>(0285) 123456</p>
+                            <p>0812-3456-7890 (WhatsApp)</p>
+                        </div>
+                    </div>
+                    <div class="kontak-lengkap-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="kontak-lengkap-item-content">
+                            <h4>Email</h4>
+                            <p>uptkj@smkmaarifnutirto.sch.id</p>
+                            <p>info@uptkjsmk.com</p>
+                        </div>
+                    </div>
+                    <div class="kontak-lengkap-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="kontak-lengkap-item-content">
+                            <h4>Jam Operasional</h4>
+                            <p>Senin - Jumat: 08.00 - 16.00</p>
+                            <p>Sabtu: 08.00 - 12.00</p>
+                            <p>Minggu & Hari Libur: Tutup</p>
+                        </div>
+                    </div>
+                    <div class="kontak-lengkap-item">
+                        <i class="fas fa-share-alt"></i>
+                        <div class="kontak-lengkap-item-content">
+                            <h4>Media Sosial</h4>
+                            <p>Facebook: UP TKJ SMK Ma'arif NU Tirto</p>
+                            <p>Instagram: @uptkj_smkmaarifnutirto</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="kontak-lengkap-form">
+                    <h3>Formulir Kontak</h3>
+                    <form id="contactFormLengkap">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nama-lengkap">Nama Lengkap</label>
+                                <input type="text" id="nama-lengkap" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email-lengkap">Email</label>
+                                <input type="email" id="email-lengkap" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="telepon">No. Telepon</label>
+                                <input type="tel" id="telepon" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subjek">Subjek</label>
+                                <input type="text" id="subjek" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="layanan">Layanan yang Dibutuhkan</label>
+                                <select id="layanan" class="form-control" required>
+                                    <option value="">Pilih Layanan</option>
+                                    <option value="perakitan">Perakitan Komputer</option>
+                                    <option value="perbaikan">Perbaikan Komputer</option>
+                                    <option value="jaringan">Instalasi Jaringan</option>
+                                    <option value="keamanan">Keamanan Jaringan</option>
+                                    <option value="software">Instalasi Software</option>
+                                    <option value="pelatihan">Pelatihan Komputer</option>
+                                    <option value="lainnya">Lainnya</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="prioritas">Tingkat Prioritas</label>
+                                <select id="prioritas" class="form-control" required>
+                                    <option value="">Pilih Prioritas</option>
+                                    <option value="rendah">Rendah</option>
+                                    <option value="sedang">Sedang</option>
+                                    <option value="tinggi">Tinggi</option>
+                                    <option value="segera">Segera</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="pesan-lengkap">Pesan</label>
+                                <textarea id="pesan-lengkap" class="form-control" required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-submit-full">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Peta Section -->
+    <section class="peta-section">
+        <div class="container">
+            <div class="peta-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.378799735348!2d109.67561631476938!3d-6.975397994959716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7021a4e3b8e6d7%3A0x7b8e5e4e3b8e6d7!2sSMK%20Ma&#39;arif%20NU%20Tirto!5e0!3m2!1sen!2sid!4v1634567890123!5m2!1sen!2sid" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Pertanyaan Umum (FAQ)</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Bagaimana cara memesan layanan UP TKJ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Anda dapat memesan layanan kami dengan mengisi formulir kontak di halaman ini, menghubungi kami melalui telepon di (0285) 123456, atau datang langsung ke alamat kami di Jalan Wonoprojo No.19 Pacar, Kecamatan Tirto, Kabupaten Pekalongan, Jawa Tengah.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah ada garansi untuk layanan yang diberikan?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, kami memberikan garansi untuk setiap layanan yang kami berikan. Garansi berbeda-beda tergantung jenis layanan, mulai dari 1 bulan hingga 1 tahun. Detail garansi akan dijelaskan saat konsultasi awal.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah UP TKJ melayani panggilan ke rumah/kantor?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, kami melayani panggilan ke rumah atau kantor untuk layanan perbaikan dan instalasi jaringan. Biaya transportasi akan disesuaikan dengan jarak lokasi.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Bagaimana dengan pembayaran? Apakah bisa cicilan?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Kami menerima pembayaran tunai, transfer bank, dan beberapa e-wallet. Untuk layanan dengan nilai di atas Rp 5.000.000, kami menyediakan opsi pembayaran cicilan dengan syarat dan ketentuan yang berlaku.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Apakah UP TKJ juga menjual sparepart komputer?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Ya, kami juga menjual berbagai sparepart komputer dengan harga kompetitif. Kami menyediakan komponen berkualitas dengan garansi resmi dari distributor.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>UP TKJ SMK Ma'arif NU Tirto</h3>
+                    <p>Unit Produksi Teknik Komputer Jaringan SMK Ma'arif NU Tirto menyediakan layanan teknologi informasi berkualitas dengan harga terjangkau.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Tautan Cepat</h3>
+                    <ul>
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="#profil">Profil</a></li>
+                        <li><a href="#layanan">Layanan</a></li>
+                        <li><a href="#testimoni">Testimoni</a></li>
+                        <li><a href="#pricelist">Pricelist</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
+                        <li><a href="#kontak-lengkap">Kontak Lengkap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Layanan Kami</h3>
+                    <ul>
+                        <li>Perakitan Komputer</li>
+                        <li>Perbaikan Komputer</li>
+                        <li>Instalasi Jaringan</li>
+                        <li>Keamanan Jaringan</li>
+                        <li>Instalasi Software</li>
+                        <li>Pelatihan Komputer</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Informasi</h3>
+                    <ul>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Karir</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Unit Produksi TKJ SMK Ma'arif NU Tirto. Hak Cipta Dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        Pesan Anda telah berhasil dikirim!
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+        
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Form submission (kontak sederhana)
+        const contactForm = document.getElementById('contactForm');
+        const notification = document.getElementById('notification');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Show notification
+            notification.classList.add('show');
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        });
+
+        // Form submission (kontak lengkap)
+        const contactFormLengkap = document.getElementById('contactFormLengkap');
+        
+        contactFormLengkap.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const namaLengkap = document.getElementById('nama-lengkap').value;
+            const emailLengkap = document.getElementById('email-lengkap').value;
+            const telepon = document.getElementById('telepon').value;
+            const subjek = document.getElementById('subjek').value;
+            const layanan = document.getElementById('layanan').value;
+            const prioritas = document.getElementById('prioritas').value;
+            const pesanLengkap = document.getElementById('pesan-lengkap').value;
+            
+            // Show notification
+            notification.classList.add('show');
+            
+            // Reset form
+            contactFormLengkap.reset();
+            
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close all other FAQ items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current FAQ item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
